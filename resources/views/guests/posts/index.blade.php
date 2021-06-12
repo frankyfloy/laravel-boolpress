@@ -15,6 +15,7 @@
                 <div class="card">
                     <div class="card-header">{{ $post->title }}</div>
                     <div class="card-body">{{ $post->content }}</div>
+                    <a class="btn-editComic mb-3" href="{{route('posts.show',$post->slug)}}">read more</a>
                 </div>
             </div>
         @endforeach

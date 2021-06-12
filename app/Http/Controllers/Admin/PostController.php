@@ -89,7 +89,7 @@ class PostController extends Controller
         ]);
 
         $editPost = $request->all();
-        $editPost['slug'] = $this->generateSlug($editPost['title'], $post->title != $request->title);
+        $editPost['slug'] = $this->generateSlug($editPost['title'], $post->title != $editPost['title'], $post->slug);
         $post->update($editPost);
 
         return redirect()->route('admin.posts.show', $post);
@@ -107,14 +107,15 @@ class PostController extends Controller
         return redirect()->route('admin.posts.index');
     }
 
-    private function generateSlug(string $title, bool $change = true){
 
-        $slug = Str::slug($title, '-');
+    private function generateSlug(string $title, bool $change = true, string $old_slug = ''){
+
+        $slug;
 
         if (!$change) {
-            return $slug;
+            $slug = $old_slug;
         }else {
-
+            $slug = Str::slug($title, '-');
             $slug_base = $slug;
 
             $contatore = 1;
@@ -127,6 +128,8 @@ class PostController extends Controller
                 $post_with_slug = Post::where('slug', '=', $slug)->first();
             }
         }
+
         return $slug;
     }
+
 }

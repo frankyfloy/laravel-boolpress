@@ -5,7 +5,7 @@
 
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <a href="{{route('index')}}">All post</a>
+            <a href="{{route('posts.index')}}">All post</a>
         </div>
     </div>
 

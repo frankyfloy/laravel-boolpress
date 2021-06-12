@@ -23,7 +23,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ route('admin.index') }}">
+                <a class="navbar-brand" href="{{ route('index') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
 
@@ -34,7 +34,17 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="navbar-brand" href="{{ route('posts.index') }}">
+                                Post
+                            </a>
+                        </li>
 
+                        <li class="nav-item">
+                            <a class="navbar-brand" href="{{ route('admin.index') }}">
+                                Area Personale
+                            </a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
