@@ -16,21 +16,39 @@
                     <div class="card-header">{{ $post->title }}</div>
                     <div class="card-body">{{ $post->content }}</div>
                     <div class="card-foot">
+                        <div class="d-flex flex-column">
+                            <a class="btn-editComic mb-3" href="{{route('admin.posts.show',$post->id)}}">Show</a>
+                            <a class="btn-editComic mb-3" href="{{route('admin.posts.edit',$post->id)}}">Edit</a>
 
 
-                        <a class="btn-editComic" href="{{route('admin.posts.edit',$post->id)}}">Edit</a>
-                        <form
-                            action="{{route('admin.posts.destroy',$post->id)}}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            {{-- <p class='confirmDeleteDialog'>Sei sicuro di voler eliminare?</p> --}}
 
-                            {{-- <button class="btn-deleteComic" type="submit" name="Delete">SI</button>
+                            <a class="btn btn-danger"
+                               onclick="event.preventDefault();
+                               this.nextElementSibling.submit();">
+                                Delete
+                            </a>
 
-                            <button class="btn-reset" type="reset" @click='hiddenModal'>NO</button> --}}
+                            <form action="{{route('admin.posts.destroy',$post->id)}}" method="POST" class="d-none">
+                                @csrf
+                                @method('DELETE')
+                            </form>
 
-                            <button type="submit" name="Delete">Delete</button>
-                        </form>
+
+                            {{-- Primo metodo delete elemento --}}
+                            {{-- <form
+                                action="{{route('admin.posts.destroy',$post->id)}}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <p class='confirmDeleteDialog'>Sei sicuro di voler eliminare?</p>
+
+                                <button class="btn-deleteComic" type="submit" name="Delete">SI</button>
+
+                                <button class="btn-reset" type="reset" @click='hiddenModal'>NO</button>
+
+                                <button type="submit" name="Delete">Delete</button>
+                            </form> --}}
+                        </div>
+
 
                     </div>
                 </div>

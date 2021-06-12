@@ -20,11 +20,14 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('index');
+Route::get('/posts', 'PostController@index')->name('posts.index');
 Route::get('/posts/{slug}', 'PostController@show')->name('posts.show');
 
 
 Route::middleware('auth')->namespace('Admin')->prefix('admin')->name('admin.')
     ->group(function(){
         Route::get('/', 'HomeController@index')->name('index');
+        Route::get('/admin/posts/dashboard', 'DashboardController@index')->name('dashboard');
+        // <a href="{{route('admin.posts.dashboard')}}">Dashboard</a>
         Route::resource('posts', 'PostController');
     });
