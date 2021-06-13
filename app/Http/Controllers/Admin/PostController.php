@@ -51,7 +51,8 @@ class PostController extends Controller
 
         $post->slug = $this->generateSlug($post->title);
         $post->save();
-        $comic = Post::orderBy('id', 'desc')->first();
+        // TODO:
+        $post = Post::orderBy('id', 'desc')->first();
         return redirect()->route('admin.posts.show',$post);
     }
 

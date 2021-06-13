@@ -27,7 +27,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.categories.create');
     }
 
     /**
@@ -38,7 +38,18 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|unique:categories|max:255',
+        ]);
+
+        $category = new  Category();
+        $category->fill($request->all());
+
+        $category->slug = $this->generateSlug($category->name);
+        $category->save();
+        $category = Category::orderBy('id', 'desc')->first();
+
+        return redirect()->route('admin.category.show',$category);
     }
 
     /**
@@ -61,7 +72,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('admin.categories.edit', compact('category'));
     }
 
     /**
@@ -73,7 +84,15 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $request->validate([
+            'name' => 'required|unique:categories|max:255',
+        ]);
+
+        $editCategory = $request->all();
+        $editCategory['slug'] = $this->generateSlug($editCategory['name'], $category->name != $editCategory['name'], $category->slug);
+        $category->update($editCategory);
+
+        return redirect()->route('admin.category.show',$category);
     }
 
     /**
@@ -84,6 +103,32 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        Post::where('category_id', '=', $category->id)->delete();
+        $category->delete();
+        return redirect()->back();
+    }
+
+    private function generateSlug(string $name, bool $change = true, string $old_slug = ''){
+
+        $slug;
+
+        if (!$change) {
+            $slug = $old_slug;
+        }else {
+            $slug = Str::slug($name, '-');
+            $slug_base = $slug;
+
+            $contatore = 1;
+            $category_with_slug = Category::where('slug', '=', $slug)->first();
+
+            while ($category_with_slug) {
+                $slug = $slug_base . '-' . $contatore;
+                $contatore++;
+
+                $category_with_slug = Category::where('slug', '=', $slug)->first();
+            }
+        }
+
+        return $slug;
     }
 }

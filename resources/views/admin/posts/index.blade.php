@@ -17,8 +17,8 @@
                     <div class="card-body">{{ $post->content }}</div>
                     <div class="card-foot">
                         <div class="d-flex flex-column">
-                            <a class="btn-editComic mb-3" href="{{route('admin.posts.show',$post->id)}}">read more</a>
-                            <a class="btn-editComic mb-3" href="{{route('admin.posts.edit',$post->id)}}">Edit</a>
+                            <a class="btn-readPost mb-3" href="{{route('admin.posts.show',$post->id)}}">read more</a>
+                            <a class="btn-editPost mb-3" href="{{route('admin.posts.edit',$post->id)}}">Edit</a>
 
 
 
