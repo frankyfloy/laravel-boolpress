@@ -5,7 +5,7 @@
 
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <a href="{{route('admin.posts.index')}}">All post</a>
+            <a href="{{route('posts.index')}}">All post</a>
         </div>
     </div>
 
@@ -14,7 +14,7 @@
         <div class="col-md-3">
             <div class="card">
                 <div class="card-header">{{ $post->title }}
-                <h6><a href="#">Category : {{ $post->category->name  ?? ' No category' }}</a> </h6>
+                <h6><a href="#">Category : {{ $post->category->name  ?? ' No category' }}</a></h6>
                 <div class="card-body">{{ $post->content }}</div>
             </div>
         </div>

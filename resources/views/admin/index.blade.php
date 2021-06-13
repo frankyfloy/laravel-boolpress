@@ -8,7 +8,7 @@
                 <a href="{{route('admin.dashboard')}}">Dashboard</a>
                 <a href="{{route('admin.posts.index')}}">Post</a>
                 <a href="{{route('admin.posts.index')}}">Users</a>
-                <a href="{{route('admin.posts.index')}}">Categories</a>
+                <a href="{{route('admin.category.index')}}">Categories</a>
                 <a href="{{route('admin.posts.index')}}">Tags</a>
             </aside>
         </div>

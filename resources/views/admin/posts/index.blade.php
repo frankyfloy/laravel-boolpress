@@ -17,7 +17,7 @@
                     <div class="card-body">{{ $post->content }}</div>
                     <div class="card-foot">
                         <div class="d-flex flex-column">
-                            <a class="btn-editComic mb-3" href="{{route('admin.posts.show',$post->id)}}">Show</a>
+                            <a class="btn-editComic mb-3" href="{{route('admin.posts.show',$post->id)}}">read more</a>
                             <a class="btn-editComic mb-3" href="{{route('admin.posts.edit',$post->id)}}">Edit</a>
 
 
@@ -32,21 +32,6 @@
                                 @csrf
                                 @method('DELETE')
                             </form>
-
-
-                            {{-- Primo metodo delete elemento --}}
-                            {{-- <form
-                                action="{{route('admin.posts.destroy',$post->id)}}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <p class='confirmDeleteDialog'>Sei sicuro di voler eliminare?</p>
-
-                                <button class="btn-deleteComic" type="submit" name="Delete">SI</button>
-
-                                <button class="btn-reset" type="reset" @click='hiddenModal'>NO</button>
-
-                                <button type="submit" name="Delete">Delete</button>
-                            </form> --}}
                         </div>
 
 

@@ -28,6 +28,6 @@ Route::middleware('auth')->namespace('Admin')->prefix('admin')->name('admin.')
     ->group(function(){
         Route::get('/', 'HomeController@index')->name('index');
         Route::get('/admin/posts/dashboard', 'DashboardController@index')->name('dashboard');
-        // <a href="{{route('admin.posts.dashboard')}}">Dashboard</a>
         Route::resource('posts', 'PostController');
+        Route::resource('category', 'CategoryController');
     });
