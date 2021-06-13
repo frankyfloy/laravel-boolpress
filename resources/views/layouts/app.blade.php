@@ -18,6 +18,13 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- Styles -->
+    <style>
+        ul.navbar-nav li.nav-item{
+            margin-right: 19px;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
@@ -34,14 +41,17 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+
                         <li class="nav-item">
-                            <a class="navbar-brand" href="{{ route('posts.index') }}">
-                                Post
-                            </a>
+                            <a href="{{ route('posts.index') }}">Post</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="navbar-brand" href="{{ route('admin.index') }}">
+                            <a href="{{route('categories.index')}}">All categories</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('admin.index') }}">
                                 Area Personale
                             </a>
                         </li>
@@ -90,4 +100,5 @@
         </main>
     </div>
 </body>
+
 </html>

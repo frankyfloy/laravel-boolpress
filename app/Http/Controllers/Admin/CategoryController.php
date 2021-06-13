@@ -50,7 +50,6 @@ class CategoryController extends Controller
     public function show(Category $category)
     {
         $posts = Post::where('category_id', '=', $category->id)->get();
-        // dd($posts);
         return view('admin.categories.show', compact('category','posts'));
     }
 

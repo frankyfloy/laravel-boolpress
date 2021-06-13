@@ -20,8 +20,13 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('index');
+
+// Post
 Route::get('/posts', 'PostController@index')->name('posts.index');
 Route::get('/posts/{slug}', 'PostController@show')->name('posts.show');
+// Category
+Route::get('/categories', 'CategoryController@index')->name('categories.index');
+Route::get('/categories/{slug}', 'CategoryController@show')->name('categories.show');
 
 
 Route::middleware('auth')->namespace('Admin')->prefix('admin')->name('admin.')
