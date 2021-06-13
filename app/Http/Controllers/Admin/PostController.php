@@ -109,7 +109,13 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-        return redirect()->route('admin.posts.index');
+
+        if (url()->previous() == 'http://localhost:8000/admin/posts') {
+            return redirect()->route('admin.posts.index');
+        }else {
+            return redirect()->back();
+        }
+
     }
 
 
