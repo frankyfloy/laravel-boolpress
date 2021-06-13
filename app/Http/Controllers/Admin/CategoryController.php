@@ -42,11 +42,12 @@ class CategoryController extends Controller
             'name' => 'required|unique:categories|max:255',
         ]);
 
-        $category = new  Category();
-        $category->fill($request->all());
+        $data = $request->all();
+        $data['slug'] = $this->generateSlug($data['name']);
 
-        $category->slug = $this->generateSlug($category->name);
-        $category->save();
+        $category = new  Category();
+        $category->create($data);
+
         $category = Category::orderBy('id', 'desc')->first();
 
         return redirect()->route('admin.category.show',$category);
@@ -103,7 +104,13 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        Post::where('category_id', '=', $category->id)->delete();
+        /**
+         * Possibilità di eliminare tutti i post relazionati alla categoria--MY-COMMENT
+         *
+         * Post::where('category_id', '=', $category->id)->delete();
+         *
+         */
+
         $category->delete();
         return redirect()->back();
     }
