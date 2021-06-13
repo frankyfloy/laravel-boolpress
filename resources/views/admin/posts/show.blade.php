@@ -10,10 +10,11 @@
     </div>
 
     <div class="row justify-content-center">
-        
+
         <div class="col-md-3">
             <div class="card">
-                <div class="card-header">{{ $post->title }}</div>
+                <div class="card-header">{{ $post->title }}
+                <h6>Category : {{ $post->category->name  ?? ' No category' }}</h6>
                 <div class="card-body">{{ $post->content }}</div>
             </div>
         </div>

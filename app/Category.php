@@ -2,10 +2,9 @@
 
 namespace App;
 
-
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Category extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -13,14 +12,11 @@ class Post extends Model
      * @var array
      */
     protected $fillable = [
-        'title',
-        'content',
+        'name',
         'slug',
-        'category_id'
     ];
 
-    public function category(){
-        return $this->belongsTo('App\Category');
+    public function posts(){
+        return $this->hasMany('App\Post');
     }
-
 }
