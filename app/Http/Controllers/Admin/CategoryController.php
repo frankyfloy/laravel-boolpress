@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Category;
+use App\Post;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -48,7 +49,9 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        $posts = Post::where('category_id', '=', $category->id)->get();
+        // dd($posts);
+        return view('admin.categories.show', compact('category','posts'));
     }
 
     /**

@@ -5,7 +5,7 @@
 
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <a href="{{route('admin.posts.create')}}">Nuovo post</a>
+            {{-- <a href="{{route('admin.posts.create')}}">Nuovo post</a> --}}
         </div>
     </div>
 
@@ -18,10 +18,9 @@
 
                     <div class="card-foot">
 
-                        {{-- <div class="d-flex flex-column">
-                            <a class="btn-editComic mb-3" href="{{route('admin.posts.show',$post->id)}}">View posts</a>
-                        </div> --}}
-
+                        <div class="d-flex flex-column">
+                            <a class="btn-editComic mb-3" href="{{route('admin.category.show',$category->id)}}">View posts</a>
+                        </div>
 
                     </div>
                 </div>
