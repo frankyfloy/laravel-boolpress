@@ -17,14 +17,11 @@ class CategoryController extends Controller
 
     public function show(string $slug)
     {
-        // dd($slug);
-        $idCategory = Category::where('slug', '=' , $slug)->first();
-        // dd($idCategory->id);
-        $posts = Post::where('category_id', '=' , $idCategory->id)->get();
-        return view('guests.categories.show', compact('posts','slug'));
+        $idCategory = Category::with('posts')->where('slug', '=' , $slug)->first();
+
+        return view('guests.categories.show',[
+            'posts' => $idCategory->posts,
+            'name' => $idCategory->slug
+        ]);
     }
-
-    // $posts = Post::where('category_id', '=', $category->id)->get();
-    // return view('admin.categories.show', compact('category','posts'));
-
 }

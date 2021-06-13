@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <a href="{{route('categories.index')}}">All categories</a>
-            <h1> {{ $slug }} </h1>
+            <h1> {{ $name }} </h1>
         </div>
     </div>
 

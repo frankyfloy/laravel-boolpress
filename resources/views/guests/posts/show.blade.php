@@ -14,7 +14,8 @@
         <div class="col-md-3">
             <div class="card">
                 <div class="card-header">{{ $post->title }}
-                <h6><a href=" {{ route('categories.show', $post->category->name) }} ">Category : {{ $post->category->name  ?? ' No category' }}</a></h6>
+                {{-- <h6><a href=" {{ route('categories.show', $post->category->name) }} ">Category : {{ $post->category->name  ?? ' No category' }}</a></h6> --}}
+                <h6><a href=" {{route('categories.show', $post->category->id ?? '') }}">Category : {{ $post->category->name  ?? ' No category' }}</a> </h6>
                 <div class="card-body">{{ $post->content }}</div>
             </div>
         </div>
